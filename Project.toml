@@ -1,0 +1,7 @@
+name = "ConvexHull"
+uuid = "655ddefa-ca68-11e8-343a-0b8455bee74b"
+authors = ["Aaron Ang <awz.ang@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
