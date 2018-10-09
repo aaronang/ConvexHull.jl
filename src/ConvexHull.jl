@@ -15,24 +15,20 @@ end
 
 function grahamscan(points::Vector{Point})
     sorted = sort(points)
-    upperhull = sorted[1:2]
-    for p in sorted[3:end]
-        push!(upperhull, p)
-        while length(upperhull) > 2 && !isrightturn(upperhull[end-2:end]...)
-            deleteat!(upperhull, length(upperhull) - 1)
-        end
-    end
-
-    reversed = reverse(sorted)
-    lowerhull = reversed[1:2]
-    for p in reversed[3:end]
-        push!(lowerhull, p)
-        while length(lowerhull) > 2 && !isrightturn(lowerhull[end-2:end]...)
-            deleteat!(lowerhull, length(lowerhull) - 1)
-        end
-    end
-
+    upperhull = halfhull(sorted)
+    lowerhull = halfhull(reverse(sorted))
     [upperhull..., lowerhull[2:end-1]...]
+end
+
+function halfhull(points::Vector{Point})
+    halfhull = points[1:2]
+    for p in points[3:end]
+        push!(halfhull, p)
+        while length(halfhull) > 2 && !isrightturn(halfhull[end-2:end]...)
+            deleteat!(halfhull, length(halfhull) - 1)
+        end
+    end
+    halfhull
 end
 
 end # module

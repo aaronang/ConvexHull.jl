@@ -20,3 +20,9 @@ using Test
 
 @test grahamscan([Point(1, 1), Point(-1, -1), Point(-1, 1), Point(1, -1)]) ==
                  [Point(-1, -1), Point(-1, 1), Point(1, 1), Point(1, -1)]
+
+@test grahamscan([Point(-1, 0), Point(1, 0), Point(0, 1)]) ==
+                 [Point(-1, 0), Point(0, 1), Point(1, 0)]
+
+@test grahamscan([Point(-1, 0), Point(-1, 0), Point(1, 0), Point(0, 1)]) ==
+                 [Point(-1, 0), Point(0, 1), Point(1, 0)]
